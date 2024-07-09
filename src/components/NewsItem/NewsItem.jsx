@@ -1,5 +1,4 @@
 import { formatTimeAgo } from "../../helpers/formatTimeAgo";
-import Image from "../Image/Image";
 import styles from "./styles.module.css";
 
 function NewsItem({ item }) {
@@ -11,7 +10,9 @@ function NewsItem({ item }) {
       ></div>
       <div className={styles.info}>
         <h3 className={styles.title}>{item.title}</h3>
-        <p className={styles.extra}></p>
+        <p className={styles.extra}>
+          {formatTimeAgo(item.published)} by {item.author}
+        </p>
       </div>
     </li>
   );
