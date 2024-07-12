@@ -1,4 +1,5 @@
 import { formatTimeAgo } from "../../helpers/formatTimeAgo";
+import withSkeleton from "../../helpers/hocs/withSkeleton";
 import styles from "./styles.module.css";
 
 function NewsItem({ item }) {
@@ -18,4 +19,6 @@ function NewsItem({ item }) {
   );
 }
 
-export default NewsItem;
+const NewsItemWithSkeleton = withSkeleton(NewsItem, "item", 10);
+
+export default NewsItemWithSkeleton;
