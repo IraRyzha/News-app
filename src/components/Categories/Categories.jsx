@@ -7,7 +7,9 @@ function Categories({ categories, selectedCategory, setSelectedCategory }) {
         return (
           <button
             key={category}
-            onClick={() => setSelectedCategory(category)}
+            onClick={() =>
+              setSelectedCategory(category === "All" ? null : category)
+            }
             className={
               category === selectedCategory ? styles.active : styles.item
             }
