@@ -1,11 +1,17 @@
-import NewsItem from "../NewsItem/NewsItem";
+import NewsItemWithSkeleton from "../NewsItem/NewsItem";
 import styles from "./styles.module.css";
 
-function NewsList({ news }) {
+function NewsList({ news, isLoading }) {
   return (
     <ul className={styles.list}>
-      {news.map((item) => {
-        return <NewsItem key={item.id} item={item} />;
+      {news?.map((item) => {
+        return (
+          <NewsItemWithSkeleton
+            key={item.id}
+            isLoading={isLoading}
+            item={item}
+          />
+        );
       })}
     </ul>
   );
