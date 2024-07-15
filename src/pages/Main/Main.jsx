@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { getCategories, getNews } from "../../api/apiNews";
 import Categories from "../../components/Categories/Categories";
 import NewsBanner from "../../components/NewsBanner/NewsBanner";
@@ -48,7 +47,7 @@ function Main() {
     <main className={styles.main}>
       {dataCategories ? (
         <Categories
-          categories={["All", ...dataCategories.categories]}
+          categories={dataCategories.categories}
           selectedCategory={filters.category}
           setSelectedCategory={(category) =>
             changeFilters("category", category)
