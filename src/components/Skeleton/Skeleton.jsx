@@ -1,11 +1,15 @@
 import styles from "./styles.module.css";
 
-function Skeleton({ count = 1, type = "banner" }) {
+function Skeleton({ count = 1, type = "banner", direction = "column" }) {
   const itemsArray = [...Array.from({ length: count }, (_, i) => i + 1)];
   return (
     <>
       {count > 1 ? (
-        <ul className={styles.list}>
+        <ul
+          className={
+            direction === "column" ? styles.columnList : styles.rowList
+          }
+        >
           {itemsArray.map((_, index) => {
             return (
               <li
