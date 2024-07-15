@@ -19,6 +19,6 @@ function NewsItem({ item }) {
   );
 }
 
-const NewsItemWithSkeleton = withSkeleton(NewsItem, "item", 10);
+const NewsItemWithSkeleton = withSkeleton(NewsItem, "item", 10, "column");
 
 export default NewsItemWithSkeleton;
