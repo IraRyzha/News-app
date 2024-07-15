@@ -1,11 +1,7 @@
-import { useState } from "react";
-import { getCategories, getNews } from "../../api/apiNews";
-import Categories from "../../components/Categories/Categories";
-import NewsBanner from "../../components/NewsBanner/NewsBanner";
-import NewsList from "../../components/NewsList/NewsList";
-import Pagination from "../../components/Pagination/Pagination";
-import Search from "../../components/Search/Search";
-import { PAGE_SIZE, TOTAL_PAGES } from "../../constants/constants";
+import { getNews } from "../../api/apiNews";
+import LatestNews from "../../components/LatestNews/LatestNews";
+import NewsByFilters from "../../components/NewsByFilters/NewsByFilters";
+import { PAGE_SIZE } from "../../constants/constants";
 import { useDebounce } from "../../helpers/hooks/useDebounce";
 import { useFetch } from "../../helpers/hooks/useFetch";
 import { useFilters } from "../../helpers/hooks/useFilters";
@@ -26,57 +22,16 @@ function Main() {
     keywords: debouncedKeywords ? debouncedKeywords : null,
   });
 
-  const { data: dataCategories } = useFetch(getCategories);
-
-  const handlePreviousPage = () => {
-    if (filters.page_number > 1) {
-      changeFilters("page_number", filters.page_number + 1);
-    }
-  };
-
-  const handleToPageNumber = (pageNumber) => {
-    changeFilters("page_number", pageNumber);
-  };
-
-  const handleNextPage = () => {
-    if (filters.page_number < TOTAL_PAGES) {
-      changeFilters("page_number", filters.page_number - 1);
-    }
-  };
+  console.log(data);
 
   return (
     <main className={styles.main}>
-      {dataCategories ? (
-        <Categories
-          categories={["All", ...dataCategories.categories]}
-          selectedCategory={filters.category}
-          setSelectedCategory={(category) =>
-            changeFilters("category", category)
-          }
-        />
-      ) : null}
-      <Search
-        keywords={filters.keywords}
-        setKeywords={(keywords) => changeFilters("keywords", keywords)}
-      />
-      <NewsBanner
+      <LatestNews banners={data && data.news} isLoading={isLoading} />
+      <NewsByFilters
+        news={data?.news}
         isLoading={isLoading}
-        item={data && data.news && data?.news[0]}
-      />
-      <Pagination
-        totalPages={TOTAL_PAGES}
-        currentPage={filters.page_number}
-        handlePreviousPage={handlePreviousPage}
-        handleToPageNumber={handleToPageNumber}
-        handleNextPage={handleNextPage}
-      />
-      <NewsList isLoading={isLoading} news={data && data.news && data?.news} />
-      <Pagination
-        totalPages={TOTAL_PAGES}
-        currentPage={filters.page_number}
-        handlePreviousPage={handlePreviousPage}
-        handleToPageNumber={handleToPageNumber}
-        handleNextPage={handleNextPage}
+        filters={filters}
+        changeFilters={changeFilters}
       />
     </main>
   );
