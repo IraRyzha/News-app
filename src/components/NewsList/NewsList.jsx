@@ -1,3 +1,4 @@
+import withSkeleton from "../../helpers/hocs/withSkeleton";
 import NewsItem from "../NewsItem/NewsItem";
 import styles from "./styles.module.css";
 
@@ -11,4 +12,6 @@ function NewsList({ news, isLoading }) {
   );
 }
 
-export default NewsList;
+const NewsListWithSkeleton = withSkeleton(NewsList, "items", 10, "column");
+
+export default NewsListWithSkeleton;
