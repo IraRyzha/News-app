@@ -14,13 +14,13 @@ function Skeleton({ count = 1, type = "banner", direction = "column" }) {
             return (
               <li
                 key={index}
-                className={type === "banner" ? styles.banner : styles.item}
+                className={type === "banner" ? styles.banner : styles.items}
               ></li>
             );
           })}
         </ul>
       ) : (
-        <li className={type === "banner" ? styles.banner : styles.item}></li>
+        <li className={type === "banner" ? styles.banner : styles.items}></li>
       )}
     </>
   );
