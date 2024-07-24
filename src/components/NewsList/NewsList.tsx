@@ -1,4 +1,4 @@
-import withSkeleton from "../../helpers/hocs/withSkeleton.jsx";
+import withSkeleton from "../../helpers/hocs/withSkeleton.js";
 import NewsItem from "../NewsItem/NewsItem.js";
 import styles from "./styles.module.css";
 

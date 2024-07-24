@@ -1,6 +1,19 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = (fetchFunction, params) => {
+interface IFetchFunction<P, T> {
+  (params?: P): Promise<T>;
+}
+
+interface IUseFetchResult<T> {
+  data: T | undefined | null;
+  isLoading: boolean;
+  error: Error | null;
+}
+
+export const useFetch = <T, P>(
+  fetchFunction: IFetchFunction<P, T>,
+  params?: P
+): IUseFetchResult<T> => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);

@@ -3,9 +3,9 @@ import { PAGE_SIZE, TOTAL_PAGES } from "../../constants/constants.js";
 import { useDebounce } from "../../helpers/hooks/useDebounce.js";
 import { useFetch } from "../../helpers/hooks/useFetch.js";
 import { useFilters } from "../../helpers/hooks/useFilters.js";
-import NewsFilters from "../NewsFilters/NewsFilters.jsx";
-import NewsList from "../NewsList/NewsList.jsx";
-import PaginationWrapper from "../PaginationWrapper/PaginationWrapper.jsx";
+import NewsFilters from "../NewsFilters/NewsFilters.js";
+import NewsList from "../NewsList/NewsList.js";
+import PaginationWrapper from "../PaginationWrapper/PaginationWrapper.js";
 import styles from "./styles.module.css";
 
 function NewsByFilters() {
