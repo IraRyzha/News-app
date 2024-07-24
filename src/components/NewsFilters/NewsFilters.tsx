@@ -1,8 +1,8 @@
-import { getCategories } from "../../api/apiNews";
-import { useFetch } from "../../helpers/hooks/useFetch";
-import Categories from "../Categories/Categories";
-import Search from "../Search/Search";
-import Slider from "../Slider/Slider";
+import { getCategories } from "../../api/apiNews.js";
+import { useFetch } from "../../helpers/hooks/useFetch.js";
+import Categories from "../Categories/Categories.js";
+import Search from "../Search/Search.jsx";
+import Slider from "../Slider/Slider.jsx";
 import styles from "./styles.module.css";
 
 function NewsFilters({ filters, changeFilters }) {

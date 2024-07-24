@@ -1,5 +1,5 @@
-import withSkeleton from "../../helpers/hocs/withSkeleton";
-import NewsBanner from "../NewsBanner/NewsBanner";
+import withSkeleton from "../../helpers/hocs/withSkeleton.jsx";
+import NewsBanner from "../NewsBanner/NewsBanner.jsx";
 import styles from "./styles.module.css";
 
 function BannersList({ banners }) {

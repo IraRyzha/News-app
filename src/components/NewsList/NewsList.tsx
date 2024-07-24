@@ -1,5 +1,5 @@
-import withSkeleton from "../../helpers/hocs/withSkeleton";
-import NewsItem from "../NewsItem/NewsItem";
+import withSkeleton from "../../helpers/hocs/withSkeleton.jsx";
+import NewsItem from "../NewsItem/NewsItem.js";
 import styles from "./styles.module.css";
 
 function NewsList({ news, isLoading }) {

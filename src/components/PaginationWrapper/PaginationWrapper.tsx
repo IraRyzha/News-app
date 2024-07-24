@@ -1,4 +1,4 @@
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../Pagination/Pagination.js";
 
 function PaginationWrapper({ top, bottom, children, ...paginationProps }) {
   return (
