@@ -1,4 +1,4 @@
-import { formatDate } from "../../helpers/formatDate";
+import { formatDate } from "../../helpers/formatDate.js";
 import styles from "./styles.module.css";
 
 function Header() {
