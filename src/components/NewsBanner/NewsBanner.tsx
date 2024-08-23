@@ -1,8 +1,13 @@
 import { formatTimeAgo } from "../../helpers/formatTimeAgo.js";
+import { INews } from "../../interfaces/index.js";
 import Image from "../Image/Image.js";
 import styles from "./styles.module.css";
 
-function NewsBanner({ item }) {
+interface Props {
+  item: INews;
+}
+
+function NewsBanner({ item }: Props) {
   // console.log("banner in NewBanner");
   // console.log(item);
   return (

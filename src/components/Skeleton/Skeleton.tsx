@@ -1,6 +1,13 @@
+import { DirectionType, SkeletonType } from "../../interfaces/index.js";
 import styles from "./styles.module.css";
 
-function Skeleton({ count = 1, type = "banner", direction = "column" }) {
+interface Props {
+  count?: number;
+  type?: SkeletonType;
+  direction?: DirectionType;
+}
+
+function Skeleton({ count = 1, type = "banner", direction = "column" }: Props) {
   const itemsArray = [...Array.from({ length: count }, (_, i) => i + 1)];
   return (
     <>
