@@ -1,8 +1,18 @@
-import { forwardRef } from "react";
+import { ForwardedRef, forwardRef } from "react";
+import { CategoriesType } from "../../interfaces/index.js";
 import styles from "./styles.module.css";
 
+interface Props {
+  categories: CategoriesType[];
+  selectedCategory: CategoriesType | null;
+  setSelectedCategory: (category: CategoriesType | null) => void;
+}
+
 const Categories = forwardRef(
-  ({ categories, selectedCategory, setSelectedCategory }, ref) => {
+  (
+    { categories, selectedCategory, setSelectedCategory }: Props,
+    ref: ForwardedRef<HTMLDivElement>
+  ) => {
     return (
       <div ref={ref} className={styles.categories}>
         <button
@@ -15,9 +25,7 @@ const Categories = forwardRef(
           return (
             <button
               key={category}
-              onClick={() =>
-                setSelectedCategory(category === "All" ? null : category)
-              }
+              onClick={() => setSelectedCategory(category)}
               className={
                 category === selectedCategory ? styles.active : styles.item
               }

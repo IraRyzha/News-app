@@ -1,5 +1,5 @@
-import LatestNews from "../../components/LatestNews/LatestNews";
-import NewsByFilters from "../../components/NewsByFilters/NewsByFilters";
+import LatestNews from "../../components/LatestNews/LatestNews.js";
+import NewsByFilters from "../../components/NewsByFilters/NewsByFilters.js";
 import styles from "./styles.module.css";
 
 function Main() {
