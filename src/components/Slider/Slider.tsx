@@ -1,4 +1,5 @@
 import React, { ReactElement, useRef } from "react";
+import { useTheme } from "../../context/ThemeContext.js";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -8,6 +9,7 @@ interface Props {
 
 function Slider({ children, step = 100 }: Props) {
   const sliderRef = useRef<HTMLElement | null>(null);
+  const { isDark } = useTheme();
 
   const scrollLeft = () => {
     if (!sliderRef.current) return;
@@ -21,11 +23,17 @@ function Slider({ children, step = 100 }: Props) {
 
   return (
     <div className={styles.slider}>
-      <button onClick={scrollLeft} className={styles.arrow}>
+      <button
+        onClick={scrollLeft}
+        className={`${styles.arrow} ${isDark ? "dark" : "light"}`}
+      >
         {"<"}
       </button>
       {React.cloneElement(children, { ref: sliderRef })}
-      <button onClick={scrollRight} className={styles.arrow}>
+      <button
+        onClick={scrollRight}
+        className={`${styles.arrow} ${isDark ? "dark" : "light"}`}
+      >
         {">"}
       </button>
     </div>

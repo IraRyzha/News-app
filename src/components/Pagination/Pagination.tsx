@@ -1,3 +1,4 @@
+import { useTheme } from "../../context/ThemeContext.js";
 import { IPaginationProps } from "../../interfaces/index.js";
 import styles from "./styles.module.css";
 
@@ -8,22 +9,23 @@ function Pagination({
   handleToPageNumber,
   handleNextPage,
 }: IPaginationProps) {
+  const { isDark } = useTheme();
   return (
-    <div className={styles.pagination}>
+    <div className={`${styles.pagination} ${isDark ? "dark" : "light"}`}>
       <button
-        className={styles.arrow}
+        className={`${styles.arrow} ${isDark ? "dark" : "light"}`}
         onClick={handlePreviousPage}
         disabled={currentPage <= 1}
       >
         {"<"}
       </button>
-      <div className={styles.list}>
+      <div className={`${styles.list} ${isDark ? "dark" : "light"}`}>
         {[...Array.from({ length: totalPages }, (_, i) => i + 1)].map(
           (_, index) => {
             return (
               <button
                 key={index}
-                className={styles.pageNumber}
+                className={`${styles.pageNumber} ${isDark ? "dark" : "light"}`}
                 onClick={() => handleToPageNumber(index + 1)}
                 disabled={currentPage == index + 1}
               >
@@ -34,7 +36,7 @@ function Pagination({
         )}
       </div>
       <button
-        className={styles.arrow}
+        className={`${styles.arrow} ${isDark ? "dark" : "light"}`}
         onClick={handleNextPage}
         disabled={currentPage >= 10}
       >
