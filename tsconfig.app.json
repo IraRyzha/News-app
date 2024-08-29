@@ -23,7 +23,15 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "shared/interfaces/vite-env.d.ts",
+    "shared/interfaces/declarations.d.ts"
+  ]
 }
