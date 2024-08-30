@@ -1,27 +1,26 @@
 import { useAppDispatch } from "@/app/appStore.js";
 import Categories from "@/features/category/ui/Categories/Categories.js";
 import Search from "@/features/search/Search/Search.js";
-import { useGetCategoriesQuery } from "@/entities/category/api/categoriesApi.js";
 import { setFilters } from "@/entities/news/model/newsSlice.js";
 import { Slider } from "@/features/slider/index.js";
 import { IFilters } from "@/shared/interfaces/index.js";
 import styles from "./styles.module.css";
+import { CategoriesType } from "@/entities/category/index.js";
 
 interface Props {
   filters: IFilters;
+  categories: CategoriesType[];
 }
 
-function NewsFilters({ filters }: Props) {
-  const { data } = useGetCategoriesQuery(null);
-
+function NewsFilters({ filters, categories }: Props) {
   const dispatch = useAppDispatch();
 
   return (
     <div className={styles.filters}>
-      {data ? (
+      {categories ? (
         <Slider step={200}>
           <Categories
-            categories={data.categories}
+            categories={categories}
             selectedCategory={filters.category}
             setSelectedCategory={(category) =>
               dispatch(setFilters({ key: "category", value: category }))

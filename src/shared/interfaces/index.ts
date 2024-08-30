@@ -13,5 +13,5 @@ export interface IFilters {
 }
 
 export type ParamsType = Partial<IFilters>;
-export type SkeletonType = "banner" | "items";
-export type DirectionType = "row" | "column";
+export type SkeletonType = "banner" | "item";
+export type DirectionType = "column" | "row";

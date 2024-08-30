@@ -1,4 +1,4 @@
-import BannersList from "./BannersList/BannersList.js";
+import NewsByFilters from "@/pages/main/ui/NewsByFilters/NewsByFilters.js";
 import NewsList from "./NewsList/NewsList.js";
 
-export { BannersList, NewsList };
+export { NewsList, NewsByFilters };
