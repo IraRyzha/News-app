@@ -1,27 +1,23 @@
-import { INews } from "@/entities/news/index.js";
-import NewsItem from "@/entities/news/ui/NewsItem/NewsItem.js";
+import { INews, NewsCard } from "@/entities/news/index.js";
 import withSkeleton from "@/shared/hocs/withSkeleton.js";
 import styles from "./styles.module.css";
 
 interface Props {
   news?: INews[];
+  type?: "item" | "banner";
+  direction?: "column" | "row";
 }
 
-function NewsList({ news }: Props) {
+function NewsList({ news, type = "item" }: Props) {
   return (
-    <ul className={styles.list}>
+    <ul className={`${type === "item" ? styles.items : styles.banners}`}>
       {news?.map((item) => {
-        return <NewsItem key={item.id} item={item} />;
+        return <NewsCard type={type} key={item.id} item={item} />;
       })}
     </ul>
   );
 }
 
-const NewsListWithSkeleton = withSkeleton<Props>(
-  NewsList,
-  "items",
-  10,
-  "column"
-);
+const NewsListWithSkeleton = withSkeleton<Props>(NewsList, 10);
 
 export default NewsListWithSkeleton;
