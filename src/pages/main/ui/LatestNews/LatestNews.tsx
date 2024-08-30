@@ -1,13 +1,18 @@
-import BannersList from "@/widgets/news/ui/BannersList/BannersList.js";
 import { useGetLatestNewsQuery } from "@/entities/news/api/newsApi.js";
 import styles from "./styles.module.css";
+import { NewsList } from "@/widgets/news/ui/index.js";
 
 function LatestNews() {
   const { data, isLoading } = useGetLatestNewsQuery(null);
 
   return (
     <section className={styles.section}>
-      <BannersList banners={data && data.news} isLoading={isLoading} />
+      <NewsList
+        type="banner"
+        direction="row"
+        news={data && data.news}
+        isLoading={isLoading}
+      />
     </section>
   );
 }
