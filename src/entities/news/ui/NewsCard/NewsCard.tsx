@@ -1,14 +1,16 @@
 import { formatTimeAgo } from "@/shared/helpers/formatTimeAgo.js";
 import Image from "@/shared/ui/Image/Image.js";
+import { ReactNode } from "react";
 import { INews } from "../../index.js";
 import styles from "./styles.module.css";
 
 interface Props {
   item: INews;
   type?: "item" | "banner";
+  viewNews?: (news: INews) => ReactNode;
 }
 
-function NewsCard({ item, type = "item" }: Props) {
+function NewsCard({ item, type = "item", viewNews }: Props) {
   return (
     <li className={`${styles.card} ${type === "banner" && styles.banner}`}>
       {type === "item" ? (
@@ -25,7 +27,10 @@ function NewsCard({ item, type = "item" }: Props) {
         <p className={styles.extra}>
           {formatTimeAgo(item?.published)} by {item?.author}
         </p>
+        {type === "item" && viewNews ? viewNews(item) : null}
       </div>
+
+      {type === "banner" && viewNews ? viewNews(item) : null}
     </li>
   );
 }
