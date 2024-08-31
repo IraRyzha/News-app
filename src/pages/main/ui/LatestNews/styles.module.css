@@ -4,3 +4,9 @@
   width: 100%;
   gap: 32px;
 }
+
+p.viewMore {
+  font-size: 14px;
+  color: #6b4eff;
+  opacity: 0.8;
+}
