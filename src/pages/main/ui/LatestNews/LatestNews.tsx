@@ -1,9 +1,22 @@
 import { useGetLatestNewsQuery } from "@/entities/news/api/newsApi.js";
 import styles from "./styles.module.css";
 import { NewsList } from "@/widgets/news/ui/index.js";
+import { INews } from "@/entities/news/index.js";
+import { useNavigate } from "react-router";
+import { useAppDispatch } from "@/app/appStore.js";
+import { setCurrentNews } from "@/entities/news/model/newsSlice.js";
 
 function LatestNews() {
   const { data, isLoading } = useGetLatestNewsQuery(null);
+
+  const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
+
+  const navigateTo = (news: INews) => {
+    dispatch(setCurrentNews(news));
+    navigate(`/news/${news.id}`);
+  };
 
   return (
     <section className={styles.section}>
@@ -12,6 +25,11 @@ function LatestNews() {
         direction="row"
         news={data && data.news}
         isLoading={isLoading}
+        viewNews={(news: INews) => (
+          <p className={styles.viewMore} onClick={() => navigateTo(news)}>
+            view more...
+          </p>
+        )}
       />
     </section>
   );
